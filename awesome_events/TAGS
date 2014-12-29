@@ -1,6 +1,12 @@
 
-app/controllers/application_controller.rb,79
+app/controllers/application_controller.rb,113
 class ApplicationController < ActionController::BaseApplicationController1,0
+   def logged_in?logged_in?10,0
+
+app/controllers/sessions_controller.rb,129
+class SessionsController < ApplicationController     SessionsController2,0
+   def createcreate3,0
+   def destroydestroy9,0
 
 app/controllers/welcome_controller.rb,92
 class WelcomeController < ApplicationControllerWelcomeController1,0
@@ -9,9 +15,20 @@ class WelcomeController < ApplicationControllerWelcomeController1,0
 app/helpers/application_helper.rb,47
 module ApplicationHelperApplicationHelper1,0
 
+app/helpers/sessions_helper.rb,41
+module SessionsHelperSessionsHelper1,0
+
 app/helpers/welcome_helper.rb,39
 module WelcomeHelperWelcomeHelper1,0
+
+app/models/user.rb,128
+class User < ActiveRecord::BaseUser1,0
+   def self.find_or_create_from_auth_hash(auth_hash)find_or_create_from_auth_hash2,0
 
 config/application.rb,98
 module AwesomeEventsAwesomeEvents17,0
   class Application < Rails::ApplicationApplication18,0
+
+db/migrate/20141229073105_create_users.rb,84
+class CreateUsers < ActiveRecord::MigrationCreateUsers1,0
+  def changechange2,0

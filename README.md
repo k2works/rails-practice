@@ -36,6 +36,7 @@ $ bundle
 $ guard init shell
 $ guard init livereload
 $ guard init foreman
+$ guard init yard
 ```
 
 ##### 独自のトップページを表示してみる
@@ -49,6 +50,30 @@ $ ./bin/rails g controller welcome index
 $ rails g bootswatch:install
 ```
 + _awesome_events/app/views/layouts/application.html.erb_
+
+#### OAuthを利用して「Twitterでログイン」機能を作る
+
+##### Twitterアプリケーションの登録
+https://apps.twitter.com/app
+
+##### Twitterアカウントでログインする機能の作成
++ omniauthのインストールと設定
+  + _awesome_events/Gemfile_
+  + _awesome_events/config/secrets.yml_
+  + _awesome_events/config/initializers/omniauth.rb_
++ ユーザーのモデルを作成する  
++ _awesome_events/app/models/user.rb_
+  + _awesome_events/db/migrate/20141229073105_create_users.rb_
++ ログイン処理を作成する  
++ _awesome_events/app/views/layouts/application.html.erb_
++ _awesome_events/app/controllers/sessions_controller.rb_
+  + _awesome_events/app/models/user.rb_
+  + _awesome_events/config/routes.rb_
++ ログアウト処理を作成する  
+  + _awesome_events/app/controllers/sessions_controller.rb_
+  + _awesome_events/app/controllers/application_controller.rb_
+  + _awesome_events/app/views/layouts/application.html.erb_
+  + _awesome_events/config/routes.rb_
 
 ## <a name="2">Railsアプリケーションのテスト</a>
 ## <a name="3">Railsのインフラと運用</a>

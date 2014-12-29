@@ -56,3 +56,8 @@ guard :foreman do
   watch( /^lib\/.+\.rb$/ )
   watch( /^config\/*/ )
 end
+
+guard 'yard' do
+   watch( /^app\/(controllers|models|helpers)\/.+\.rb$/ )
+end
+

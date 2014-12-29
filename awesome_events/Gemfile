@@ -38,6 +38,10 @@ gem 'twitter-bootswatch-rails', '~> 3.2.0'
 # twitter bootstrap helpers gem, e.g., alerts etc...
 gem 'twitter-bootswatch-rails-helpers'
 
+# OmniAuth
+gem 'omniauth', '~> 1.2.1'
+gem 'omniauth-twitter', '~> 1.0.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -65,6 +69,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'ruby-lint'
   gem 'method_source', ">= 0.8.2"
+  gem 'yard'
   gem 'guard-yard'
   gem 'guard-livereload'
   gem 'rack-livereload'
