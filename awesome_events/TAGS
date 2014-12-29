@@ -1,0 +1,17 @@
+
+app/controllers/application_controller.rb,79
+class ApplicationController < ActionController::BaseApplicationController1,0
+
+app/controllers/welcome_controller.rb,92
+class WelcomeController < ApplicationControllerWelcomeController1,0
+  def indexindex2,0
+
+app/helpers/application_helper.rb,47
+module ApplicationHelperApplicationHelper1,0
+
+app/helpers/welcome_helper.rb,39
+module WelcomeHelperWelcomeHelper1,0
+
+config/application.rb,98
+module AwesomeEventsAwesomeEvents17,0
+  class Application < Rails::ApplicationApplication18,0
