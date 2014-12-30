@@ -139,7 +139,20 @@ $ rails g bootswatch:install
   + _awesome_events/app/controllers/events_controller.rb_
   + _awesome_events/app/controllers/tickets_controller.rb_
   + _awesome_events/app/models/ticket.rb_
-  
+
+#### 退会機能を作る
++ 退会用コントーローラ、ビュー、ルーティングの作成
+    ```bash
+    $ rails g controller users
+    ```
+    + _awesome_events/app/views/layouts/application.html.erb_
+    + _awesome_events/app/views/users/retire.html.erb_
+    + _awesome_events/config/routes.rb_
++ 退会処理の作成
+    + _awesome_events/app/controllers/users_controller.rb_
+    + _awesome_events/app/models/user.rb_
+    + _awesome_events/app/views/events/show.html.erb_  
+
 ## <a name="2">Railsアプリケーションのテスト</a>
 ## <a name="3">Railsのインフラと運用</a>
 

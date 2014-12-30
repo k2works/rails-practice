@@ -1,4 +1,4 @@
-app/models/user.rb cfcbfd91687500e4d7daa74772c325498af1febf
+app/models/user.rb c90e457d808a4d63a45a5af2ad0f75a21f018f21
 app/models/event.rb 74a45065232fe339dca09cd89cdf839729e0719f
 app/models/ticket.rb fd94ea252c6b93c907021da794b461922b0132c3
 app/helpers/events_helper.rb f704008b71fd2cdd74afeba04f895fe5694e32fc
@@ -11,3 +11,5 @@ app/controllers/welcome_controller.rb 324156529bc2125a52f5fe887633db97ec0401fe
 app/controllers/tickets_controller.rb d1657ae8801163d3b59b0a08ca2c864ab9c54cff
 app/controllers/sessions_controller.rb 7e15e0f02ff51e0d934368d68fdd5041f6e83f87
 app/controllers/application_controller.rb 625e355266709a7769634813b65a0154508e34cd
+app/controllers/users_controller.rb 662b8faa2855e5d520ba8e0cad865b1b332c48f3
+app/helpers/users_helper.rb 4957066bcb0fa49423c7ae0fd83bc3b9e28a5ec7
