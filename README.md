@@ -101,6 +101,26 @@ https://apps.twitter.com/app
   + _awesome_events/config/application.rb_
   + _awesome_events/config/locales/ar_ja.yml_
 
+##### イベントの閲覧機能を作る  
++ イベント詳細ページの作成
+  + awesome_events/app/controllers/events_controller.rb
+  + awesome_events/app/views/events/show.html.erb
+  + awesome_events/app/models/event.rb
+
++ イベント一覧ページの作成
+  + awesome_events/app/views/welcome/index.html.erb
+  + awesome_events/app/controllers/welcome_controller.rb
+
+##### イベントの編集・削除機能を作る
++ イベント編集機能を作る
+  + _awesome_events/app/views/events/show.html.erb_
+  + _awesome_events/app/models/event.rb_
+  + _awesome_events/app/controllers/events_controller.rb_
+  + _awesome_events/app/views/events/edit.html.erb_
++ イベント削除機能を作る
+  + _awesome_events/app/views/events/show.html.erb_
+  + _awesome_events/app/controllers/events_controller.rb_
+  
 ## <a name="2">Railsアプリケーションのテスト</a>
 ## <a name="3">Railsのインフラと運用</a>
 

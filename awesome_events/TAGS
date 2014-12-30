@@ -5,20 +5,24 @@ class ApplicationController < ActionController::BaseApplicationController2,0
    def logged_in?logged_in?16,0
    def authenticateauthenticate20,0
 
-app/controllers/events_controller.rb,150
+app/controllers/events_controller.rb,248
 class EventsController < ApplicationControllerEventsController2,0
    def newnew5,0
    def createcreate9,0
-   def event_paramsevent_params20,0
+   def showshow18,0
+   def editedit22,0
+   def updateupdate26,0
+   def destroydestroy35,0
+   def event_paramsevent_params43,0
 
 app/controllers/sessions_controller.rb,129
 class SessionsController < ApplicationController     SessionsController2,0
    def createcreate3,0
    def destroydestroy9,0
 
-app/controllers/welcome_controller.rb,92
+app/controllers/welcome_controller.rb,93
 class WelcomeController < ApplicationControllerWelcomeController1,0
-  def indexindex2,0
+   def indexindex2,0
 
 app/helpers/application_helper.rb,47
 module ApplicationHelperApplicationHelper1,0
@@ -32,16 +36,22 @@ module SessionsHelperSessionsHelper1,0
 app/helpers/welcome_helper.rb,39
 module WelcomeHelperWelcomeHelper1,0
 
-app/models/event.rb,130
+app/models/event.rb,454
 class Event < ActiveRecord::BaseEvent17,0
-   def start_time_should_be_before_end_timestart_time_should_be_before_end_time27,0
+   belongs_to :owner, class_name: 'User'owner18,0
+   belongs_to :owner, class_name: 'User'owner=18,0
+   belongs_to :owner, class_name: 'User'build_owner18,0
+   belongs_to :owner, class_name: 'User'create_owner18,0
+   belongs_to :owner, class_name: 'User'create_owner!18,0
+   def created_by?(user)created_by?27,0
+   def start_time_should_be_before_end_timestart_time_should_be_before_end_time34,0
 
-app/models/user.rb,502
+app/models/user.rb,510
 class User < ActiveRecord::BaseUser14,0
-   has_many :create_events, class_name: 'Event', foreign_key: :owner_idcreate_events15,0
-   has_many :create_events, class_name: 'Event', foreign_key: :owner_idcreate_events=15,0
-   has_many :create_events, class_name: 'Event', foreign_key: :owner_idcreate_event_ids15,0
-   has_many :create_events, class_name: 'Event', foreign_key: :owner_idcreate_event_ids=15,0
+   has_many :created_events, class_name: 'Event', foreign_key: :owner_idcreated_events15,0
+   has_many :created_events, class_name: 'Event', foreign_key: :owner_idcreated_events=15,0
+   has_many :created_events, class_name: 'Event', foreign_key: :owner_idcreated_event_ids15,0
+   has_many :created_events, class_name: 'Event', foreign_key: :owner_idcreated_event_ids=15,0
    def self.find_or_create_from_auth_hash(auth_hash)find_or_create_from_auth_hash17,0
 
 config/application.rb,98
