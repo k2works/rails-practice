@@ -75,6 +75,32 @@ https://apps.twitter.com/app
   + _awesome_events/app/views/layouts/application.html.erb_
   + _awesome_events/config/routes.rb_
 
+##### イベントの登録機能を作る
++ タイムゾーンを設定する
+  + _awesome_events/config/application.rb_
+
++ イベント用のモデルを作成する
+  ```bash
+  $ rails g resource event owner_id:integer name:string place:string start_time:datetime end_time:datetime content:text
+  ```
+  + _awesome_events/db/migrate/20141230042853_create_events.rb_
+  + _awesome_events/app/models/event.rb_
+  + _awesome_events/app/views/layouts/application.html.erb_
+
++ ログイン状態を管理する処理を作る
+  + _awesome_events/app/controllers/application_controller.rb_
+  + _awesome_events/app/views/layouts/application.html.erb_
+  + _awesome_events/app/controllers/events_controller.rb_
+  + _awesome_events/app/models/user.rb_
+
++ イベント用登録フォームを作る
+  + _awesome_events/app/views/events/new.html.erb_
+
++ i18nの設定をする
+  + _awesome_events/Gemfile_  
+  + _awesome_events/config/application.rb_
+  + _awesome_events/config/locales/ar_ja.yml_
+
 ## <a name="2">Railsアプリケーションのテスト</a>
 ## <a name="3">Railsのインフラと運用</a>
 
@@ -85,3 +111,4 @@ https://apps.twitter.com/app
 + [Guard::Foreman](https://github.com/J3RN/guard-foreman)
 + [Foreman](https://github.com/ddollar/foreman)
 + [TWBS Bootstrap 3.2.0 Rails gem](https://github.com/scottvrosenthal/twitter-bootswatch-rails)
++ [Rails Locale Data Repository](https://github.com/svenfuchs/rails-i18n)

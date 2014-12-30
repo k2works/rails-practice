@@ -1,4 +1,19 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer          not null, primary key
+#  provider   :string
+#  uid        :string
+#  nickname   :string
+#  image_url  :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class User < ActiveRecord::Base
+   has_many :create_events, class_name: 'Event', foreign_key: :owner_id
+   
    def self.find_or_create_from_auth_hash(auth_hash)
 	  provider = auth_hash[:provider]
 	  uid = auth_hash[:uid]

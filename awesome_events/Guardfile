@@ -30,15 +30,16 @@ guard :shell do
    watch(%r{app/controllers/.+\.rb}) { `ripper-tags -e -R -f TAGS` }
    watch(%r{app/models/.+\.rb}) { `ripper-tags -e -R -f TAGS` }
    watch(%r{app/helpers/.+\.rb}) { `ripper-tags -e -R -f TAGS` }
+   watch(%r{app/models/.+\.rb}) { `erd --attributes=foreign_keys,primary_keys,content,timestamp --filename=E-Rdiagram --filetype=png` }
 end
 
 guard 'livereload' do
-  watch(%r{app/views/.+\.(erb|haml|slim)$})
-  watch(%r{app/helpers/.+\.rb})
-  watch(%r{public/.+\.(css|js|html)})
-  watch(%r{config/locales/.+\.yml})
-  # Rails Assets Pipeline
-  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
+   watch( /^app\/(controllers|models|helpers)\/.+\.rb$/ )
+   watch(%r{app/views/.+\.(erb|haml|slim)$})
+   watch(%r{public/.+\.(css|js|html)})
+   watch(%r{config/locales/.+\.yml})
+   # Rails Assets Pipeline
+   watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
 end
 
 # Usage:
@@ -52,7 +53,7 @@ end
 # * :root - an alternate application root
 guard :foreman do
   # Rails example - Watch controllers, models, helpers, lib, and config files
-  watch( /^app\/(controllers|models|helpers)\/.+\.rb$/ )
+#  watch( /^app\/(controllers|models|helpers)\/.+\.rb$/ )
   watch( /^lib\/.+\.rb$/ )
   watch( /^config\/*/ )
 end

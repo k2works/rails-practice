@@ -101,7 +101,28 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<h2 id="label-Schema+Information">Schema Information</h2>
 
+<p>Table name: users</p>
+
+<pre class="code ruby"><code class="ruby">id         :integer          not null, primary key
+provider   :string
+uid        :string
+nickname   :string
+image_url  :string
+created_at :datetime         not null
+updated_at :datetime         not null</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -163,20 +184,20 @@
       <pre class="lines">
 
 
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12</pre>
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 2</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_or_create_from_auth_hash'>find_or_create_from_auth_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_auth_hash'>auth_hash</span><span class='rparen'>)</span>
 <span class='id identifier rubyid_provider'>provider</span> <span class='op'>=</span> <span class='id identifier rubyid_auth_hash'>auth_hash</span><span class='lbracket'>[</span><span class='symbol'>:provider</span><span class='rbracket'>]</span>
@@ -184,7 +205,7 @@
 <span class='id identifier rubyid_nickname'>nickname</span> <span class='op'>=</span> <span class='id identifier rubyid_auth_hash'>auth_hash</span><span class='lbracket'>[</span><span class='symbol'>:info</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:nickname</span><span class='rbracket'>]</span>
 <span class='id identifier rubyid_image_url'>image_url</span> <span class='op'>=</span> <span class='id identifier rubyid_auth_hash'>auth_hash</span><span class='lbracket'>[</span><span class='symbol'>:info</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:image</span><span class='rbracket'>]</span>
 
-<span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find_or_create_by'>find_or_create_by</span><span class='lparen'>(</span><span class='id identifier rubyid_provider'>provider</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_user'>user</span><span class='op'>|</span>
+<span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find_or_create_by'>find_or_create_by</span><span class='lparen'>(</span><span class='label'>provider:</span> <span class='id identifier rubyid_provider'>provider</span><span class='comma'>,</span> <span class='label'>uid:</span> <span class='id identifier rubyid_uid'>uid</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_user'>user</span><span class='op'>|</span>
 <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_nickname'>nickname</span> <span class='op'>=</span> <span class='id identifier rubyid_nickname'>nickname</span>
 <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_image_url'>image_url</span> <span class='op'>=</span> <span class='id identifier rubyid_image_url'>image_url</span>
 <span class='kw'>end</span>
@@ -199,7 +220,7 @@
 </div>
 
     <div id="footer">
-  Generated on Mon Dec 29 17:35:00 2014 by
+  Generated on Tue Dec 30 16:05:58 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.1.5).
 </div>

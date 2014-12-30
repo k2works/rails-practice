@@ -42,6 +42,9 @@ gem 'twitter-bootswatch-rails-helpers'
 gem 'omniauth', '~> 1.2.1'
 gem 'omniauth-twitter', '~> 1.0.1'
 
+# i18n
+gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master' # For 4.x
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -75,8 +78,9 @@ group :development, :test do
   gem 'rack-livereload'
   gem "better_errors"
   gem "binding_of_caller"
-  gem 'rails-erd'
+  gem 'rails-erd', github: 'ready4god2513/rails-erd', branch: 'rails-4.2-support-fix'
   gem 'foreman'
   gem 'guard-foreman'
+  gem 'annotate', '~> 2.6.5'
 end
 
