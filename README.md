@@ -53,10 +53,10 @@ $ rails g bootswatch:install
 
 #### OAuthを利用して「Twitterでログイン」機能を作る
 
-##### Twitterアプリケーションの登録
-https://apps.twitter.com/app
++ Twitterアプリケーションの登録
+  https://apps.twitter.com/app
 
-##### Twitterアカウントでログインする機能の作成
++ Twitterアカウントでログインする機能の作成
 + omniauthのインストールと設定
   + _awesome_events/Gemfile_
   + _awesome_events/config/secrets.yml_
@@ -75,7 +75,7 @@ https://apps.twitter.com/app
   + _awesome_events/app/views/layouts/application.html.erb_
   + _awesome_events/config/routes.rb_
 
-##### イベントの登録機能を作る
+#### イベントの登録機能を作る
 + タイムゾーンを設定する
   + _awesome_events/config/application.rb_
 
@@ -101,7 +101,7 @@ https://apps.twitter.com/app
   + _awesome_events/config/application.rb_
   + _awesome_events/config/locales/ar_ja.yml_
 
-##### イベントの閲覧機能を作る  
+#### イベントの閲覧機能を作る  
 + イベント詳細ページの作成
   + awesome_events/app/controllers/events_controller.rb
   + awesome_events/app/views/events/show.html.erb
@@ -111,7 +111,7 @@ https://apps.twitter.com/app
   + awesome_events/app/views/welcome/index.html.erb
   + awesome_events/app/controllers/welcome_controller.rb
 
-##### イベントの編集・削除機能を作る
+#### イベントの編集・削除機能を作る
 + イベント編集機能を作る
   + _awesome_events/app/views/events/show.html.erb_
   + _awesome_events/app/models/event.rb_
@@ -120,6 +120,25 @@ https://apps.twitter.com/app
 + イベント削除機能を作る
   + _awesome_events/app/views/events/show.html.erb_
   + _awesome_events/app/controllers/events_controller.rb_
+
+#### 登録されたイベントへの参加機能、参加キャンセル機能を作る
++ イベント参加機能の追加
+  + _awesome_events/app/controllers/tickets_controller.rb_
+  + _awesome_events/db/migrate/20141230082456_create_tickets.rb_
+  + _awesome_events/app/models/ticket.rb_
+  + _awesome_events/app/models/user.rb_
+  + _awesome_events/app/models/event.rb_
+  + _awesome_events/app/views/events/show.html.erb_
+  + _awesome_events/app/controllers/tickets_controller.rb_
+  + _awesome_events/app/assets/javascripts/tickets.js.coffee_
+  + _awesome_events/config/locales/ar_ja.yml_
+  + _awesome_events/app/helpers/application_helper.rb_
+  + _awesome_events/app/controllers/events_controller.rb_
++ イベント参加をキャンセルする機能の作成
+  + _awesome_events/app/views/events/show.html.erb_
+  + _awesome_events/app/controllers/events_controller.rb_
+  + _awesome_events/app/controllers/tickets_controller.rb_
+  + _awesome_events/app/models/ticket.rb_
   
 ## <a name="2">Railsアプリケーションのテスト</a>
 ## <a name="3">Railsのインフラと運用</a>

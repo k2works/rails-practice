@@ -14,4 +14,5 @@
  *= require_self
  *= require bootswatch/loader
  *= require bootswatch/bootswatch
+ *= require_tree .
  */

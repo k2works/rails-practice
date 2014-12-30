@@ -10,22 +10,29 @@ class EventsController < ApplicationControllerEventsController2,0
    def newnew5,0
    def createcreate9,0
    def showshow18,0
-   def editedit22,0
-   def updateupdate26,0
-   def destroydestroy35,0
-   def event_paramsevent_params43,0
+   def editedit24,0
+   def updateupdate28,0
+   def destroydestroy37,0
+   def event_paramsevent_params45,0
 
 app/controllers/sessions_controller.rb,129
 class SessionsController < ApplicationController     SessionsController2,0
    def createcreate3,0
    def destroydestroy9,0
 
+app/controllers/tickets_controller.rb,142
+class TicketsController < ApplicationControllerTicketsController2,0
+   def newnew3,0
+   def createcreate7,0
+   def destroydestroy20,0
+
 app/controllers/welcome_controller.rb,93
 class WelcomeController < ApplicationControllerWelcomeController1,0
    def indexindex2,0
 
-app/helpers/application_helper.rb,47
+app/helpers/application_helper.rb,96
 module ApplicationHelperApplicationHelper1,0
+   def url_for_twitter(user)url_for_twitter2,0
 
 app/helpers/events_helper.rb,37
 module EventsHelperEventsHelper1,0
@@ -33,26 +40,50 @@ module EventsHelperEventsHelper1,0
 app/helpers/sessions_helper.rb,41
 module SessionsHelperSessionsHelper1,0
 
+app/helpers/tickets_helper.rb,39
+module TicketsHelperTicketsHelper1,0
+
 app/helpers/welcome_helper.rb,39
 module WelcomeHelperWelcomeHelper1,0
 
-app/models/event.rb,454
+app/models/event.rb,682
 class Event < ActiveRecord::BaseEvent17,0
-   belongs_to :owner, class_name: 'User'owner18,0
-   belongs_to :owner, class_name: 'User'owner=18,0
-   belongs_to :owner, class_name: 'User'build_owner18,0
-   belongs_to :owner, class_name: 'User'create_owner18,0
-   belongs_to :owner, class_name: 'User'create_owner!18,0
-   def created_by?(user)created_by?27,0
-   def start_time_should_be_before_end_timestart_time_should_be_before_end_time34,0
+   has_many :tickets, dependent: :destroytickets18,0
+   has_many :tickets, dependent: :destroytickets=18,0
+   has_many :tickets, dependent: :destroyticket_ids18,0
+   has_many :tickets, dependent: :destroyticket_ids=18,0
+   belongs_to :owner, class_name: 'User'owner19,0
+   belongs_to :owner, class_name: 'User'owner=19,0
+   belongs_to :owner, class_name: 'User'build_owner19,0
+   belongs_to :owner, class_name: 'User'create_owner19,0
+   belongs_to :owner, class_name: 'User'create_owner!19,0
+   def created_by?(user)created_by?28,0
+   def start_time_should_be_before_end_timestart_time_should_be_before_end_time35,0
 
-app/models/user.rb,510
+app/models/ticket.rb,390
+class Ticket < ActiveRecord::BaseTicket13,0
+  belongs_to :useruser14,0
+  belongs_to :useruser=14,0
+  belongs_to :userbuild_user14,0
+  belongs_to :usercreate_user14,0
+  belongs_to :usercreate_user!14,0
+  belongs_to :eventevent15,0
+  belongs_to :eventevent=15,0
+  belongs_to :eventbuild_event15,0
+  belongs_to :eventcreate_event15,0
+  belongs_to :eventcreate_event!15,0
+
+app/models/user.rb,654
 class User < ActiveRecord::BaseUser14,0
    has_many :created_events, class_name: 'Event', foreign_key: :owner_idcreated_events15,0
    has_many :created_events, class_name: 'Event', foreign_key: :owner_idcreated_events=15,0
    has_many :created_events, class_name: 'Event', foreign_key: :owner_idcreated_event_ids15,0
    has_many :created_events, class_name: 'Event', foreign_key: :owner_idcreated_event_ids=15,0
-   def self.find_or_create_from_auth_hash(auth_hash)find_or_create_from_auth_hash17,0
+   has_many :ticketstickets16,0
+   has_many :ticketstickets=16,0
+   has_many :ticketsticket_ids16,0
+   has_many :ticketsticket_ids=16,0
+   def self.find_or_create_from_auth_hash(auth_hash)find_or_create_from_auth_hash18,0
 
 config/application.rb,98
 module AwesomeEventsAwesomeEvents17,0
@@ -64,4 +95,8 @@ class CreateUsers < ActiveRecord::MigrationCreateUsers1,0
 
 db/migrate/20141230042853_create_events.rb,86
 class CreateEvents < ActiveRecord::MigrationCreateEvents1,0
+  def changechange2,0
+
+db/migrate/20141230082456_create_tickets.rb,88
+class CreateTickets < ActiveRecord::MigrationCreateTickets1,0
   def changechange2,0

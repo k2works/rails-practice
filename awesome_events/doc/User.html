@@ -184,7 +184,6 @@ updated_at :datetime         not null</code></pre>
       <pre class="lines">
 
 
-17
 18
 19
 20
@@ -194,10 +193,11 @@ updated_at :datetime         not null</code></pre>
 24
 25
 26
-27</pre>
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_or_create_from_auth_hash'>find_or_create_from_auth_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_auth_hash'>auth_hash</span><span class='rparen'>)</span>
 <span class='id identifier rubyid_provider'>provider</span> <span class='op'>=</span> <span class='id identifier rubyid_auth_hash'>auth_hash</span><span class='lbracket'>[</span><span class='symbol'>:provider</span><span class='rbracket'>]</span>
@@ -220,7 +220,7 @@ updated_at :datetime         not null</code></pre>
 </div>
 
     <div id="footer">
-  Generated on Tue Dec 30 16:53:14 2014 by
+  Generated on Tue Dec 30 19:54:16 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.1.5).
 </div>

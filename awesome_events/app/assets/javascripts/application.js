@@ -15,4 +15,4 @@
 //= require bootswatch/loader
 //= require bootswatch/bootswatch
 //= require turbolinks
-
+//= require_tree .
