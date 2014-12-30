@@ -153,6 +153,13 @@ $ rails g bootswatch:install
     + _awesome_events/app/models/user.rb_
     + _awesome_events/app/views/events/show.html.erb_  
 
+#### 落穂ひろい
++ エラーハンドリング
+    + awesome_events/app/controllers/application_controller.rb
+    + awesome_events/app/views/application/error404.html.erb
+    + awesome_events/app/views/application/error500.html.erb
+    + awesome_events/config/routes.rb
+
 ## <a name="2">Railsアプリケーションのテスト</a>
 ## <a name="3">Railsのインフラと運用</a>
 
