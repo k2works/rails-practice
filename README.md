@@ -18,6 +18,9 @@ Rails再入門
 
 # 詳細
 ## <a name="1">Railsアプリケーション開発</a>
+### ER図
+![ER図](./E-Rdiagram.png)
+
 ### イベント告知アプリケーションを作る
 #### アプリケーションの作成と下準備
 ##### rails newでアプリケーションの作成
@@ -159,6 +162,35 @@ $ rails g bootswatch:install
     + awesome_events/app/views/application/error404.html.erb
     + awesome_events/app/views/application/error500.html.erb
     + awesome_events/config/routes.rb
+
+#### gemで機能拡張をする
++ Kaminariでページネーション機能を作る
+  + _awesome_events/Gemfile_
+  + _awesome_events/app/controllers/welcome_controller.rb_
+  + _awesome_events/app/views/welcome/index.html.erb_
+  + _awesome_events/config/locales/kaminari_ja.yml_
++ ransackでイベント検索機能を作る
+  + _awesome_events/app/views/welcome/index.html.erb_
+  + _awesome_events/app/controllers/welcome_controller.rb_
+  + _awesome_events/app/models/event.rb_
++ carrierwaveで画像を添付する
+  ```bash
+  $ rails g migration add_event_image_to_event event_image
+  $ rake db:migrate
+  $ rails g uploader event_image
+  $ brew install imagemagick
+  ```
+  + _awesome_events/app/models/event.rb_
+  + _awesome_events/app/views/events/new.html.erb_
+  + _awesome_events/app/views/events/edit.html.erb_
+  + _awesome_events/app/controllers/events_controller.rb_
+  + _awesome_events/app/views/events/show.html.erb_
++ アップロードにおけるその他の注意点
+  + _awesome_events/app/uploaders/event_image_uploader.rb_
+  + _awesome_events/config/locales/ar_ja.yml_
+  + _awesome_events/config/locales/kaminari_ja.yml_
+
+
 
 ## <a name="2">Railsアプリケーションのテスト</a>
 ## <a name="3">Railsのインフラと運用</a>
