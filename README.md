@@ -18,12 +18,6 @@ Rails再入門
 
 # 詳細
 ## <a name="1">Railsアプリケーション開発</a>
-<<<<<<< HEAD
-=======
-### ER図
-![ER図](./awesome_events/E-Rdiagram.png)
-
->>>>>>> 89328d0fa1b0fc5da70db0e25de613ebf141a88e
 ### イベント告知アプリケーションを作る
 #### ER図
 ![ER図](./awesome_events/E-Rdiagram.png)
