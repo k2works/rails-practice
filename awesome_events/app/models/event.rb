@@ -3,15 +3,16 @@
 #
 # Table name: events
 #
-#  id         :integer          not null, primary key
-#  owner_id   :integer
-#  name       :string
-#  place      :string
-#  start_time :datetime
-#  end_time   :datetime
-#  content    :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  owner_id    :integer
+#  name        :string
+#  place       :string
+#  start_time  :datetime
+#  end_time    :datetime
+#  content     :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  event_image :string
 #
 
 class Event < ActiveRecord::Base
@@ -37,6 +38,10 @@ class Event < ActiveRecord::Base
 
    def self.ransackable_associations(auth_object = nil)
 	  []
+   end
+
+   def rails?
+	  !!(name =~ /Rails/)	  
    end
 
    private

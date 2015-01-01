@@ -21,8 +21,8 @@ Rails再入門
 ### イベント告知アプリケーションを作る
 #### ER図
 ![ER図](./awesome_events/E-Rdiagram.png)
-#### アプリケーションの作成と下準備
-##### rails newでアプリケーションの作成
+### アプリケーションの作成と下準備
++ rails newでアプリケーションの作成
 
 ```bash
 $ gem install rails --no-ri --no-rdoc
@@ -41,19 +41,19 @@ $ guard init foreman
 $ guard init yard
 ```
 
-##### 独自のトップページを表示してみる
++ 独自のトップページを表示してみる
 ```bash
 $ ./bin/rails g controller welcome index
 ```
 + _awesome_events/config/routes.rb_
 
-##### Bootstrapを導入
++ Bootstrapを導入
 ```bash
 $ rails g bootswatch:install
 ```
 + _awesome_events/app/views/layouts/application.html.erb_
 
-#### OAuthを利用して「Twitterでログイン」機能を作る
+### OAuthを利用して「Twitterでログイン」機能を作る
 
 + Twitterアプリケーションの登録
   https://apps.twitter.com/app
@@ -77,7 +77,7 @@ $ rails g bootswatch:install
   + _awesome_events/app/views/layouts/application.html.erb_
   + _awesome_events/config/routes.rb_
 
-#### イベントの登録機能を作る
+### イベントの登録機能を作る
 + タイムゾーンを設定する
   + _awesome_events/config/application.rb_
 
@@ -103,7 +103,7 @@ $ rails g bootswatch:install
   + _awesome_events/config/application.rb_
   + _awesome_events/config/locales/ar_ja.yml_
 
-#### イベントの閲覧機能を作る  
+### イベントの閲覧機能を作る  
 + イベント詳細ページの作成
   + awesome_events/app/controllers/events_controller.rb
   + awesome_events/app/views/events/show.html.erb
@@ -113,7 +113,7 @@ $ rails g bootswatch:install
   + awesome_events/app/views/welcome/index.html.erb
   + awesome_events/app/controllers/welcome_controller.rb
 
-#### イベントの編集・削除機能を作る
+### イベントの編集・削除機能を作る
 + イベント編集機能を作る
   + _awesome_events/app/views/events/show.html.erb_
   + _awesome_events/app/models/event.rb_
@@ -123,7 +123,7 @@ $ rails g bootswatch:install
   + _awesome_events/app/views/events/show.html.erb_
   + _awesome_events/app/controllers/events_controller.rb_
 
-#### 登録されたイベントへの参加機能、参加キャンセル機能を作る
+### 登録されたイベントへの参加機能、参加キャンセル機能を作る
 + イベント参加機能の追加
   + _awesome_events/app/controllers/tickets_controller.rb_
   + _awesome_events/db/migrate/20141230082456_create_tickets.rb_
@@ -142,7 +142,7 @@ $ rails g bootswatch:install
   + _awesome_events/app/controllers/tickets_controller.rb_
   + _awesome_events/app/models/ticket.rb_
 
-#### 退会機能を作る
+### 退会機能を作る
 + 退会用コントーローラ、ビュー、ルーティングの作成
     ```bash
     $ rails g controller users
@@ -155,14 +155,14 @@ $ rails g bootswatch:install
     + _awesome_events/app/models/user.rb_
     + _awesome_events/app/views/events/show.html.erb_  
 
-#### 落穂ひろい
+### 落穂ひろい
 + エラーハンドリング
     + awesome_events/app/controllers/application_controller.rb
     + awesome_events/app/views/application/error404.html.erb
     + awesome_events/app/views/application/error500.html.erb
     + awesome_events/config/routes.rb
 
-#### gemで機能拡張をする
+### gemで機能拡張をする
 + Kaminariでページネーション機能を作る
   + _awesome_events/Gemfile_
   + _awesome_events/app/controllers/welcome_controller.rb_
@@ -189,9 +189,70 @@ $ rails g bootswatch:install
   + _awesome_events/config/locales/ar_ja.yml_
   + _awesome_events/config/locales/kaminari_ja.yml_
 
-
-
 ## <a name="2">Railsアプリケーションのテスト</a>
+### テストを実行するための環境を整える
++ RSpecのインストール
+  + _awesome_events/Gemfile_
+  ```bash
+  $ ./bin/rails g rspec:install
+  $ guard init rspec
+  ```
++ ひな形の作成
+  ```bash
+  $ ./bin/rails g rspec:model event
+  ```
++ モデルのテストを書く  
+  + _awesome_events/spec/models/event_spec.rb_
++ shouldaを利用してバリデーションのテストを書く  
++ _awesome_events/spec/models/event_spec.rb_
++ fixture replacement
+  ```bash
+  $ ./bin/rails g factory_girl:model event
+  ```
+  + _awesome_events/spec/factories/events.rb_
+  + _awesome_events/spec/factories/users.rb_
++ factory_girを使ってテストコードを書く
+  + _awesome_events/spec/models/event_spec.rb_
+
+### コントローラのテスト
++ ひな型の作成
+  ```bash
+  $ ./bin/rails g rspec:controller events
+  ```
+
++ コントローラーのテストを書く  
+  + _awesome_events/spec/controllers/events_controller_spec.rb_
+
+### ビューのテスト
++ ひな形の作成
+  ```bash
+  $ ./bin/rails g rspec:view events show
+  ```
+
++ ビューのテストを書く
+  + _awesome_events/spec/views/events/show.html.erb_spec.rb_
+
+### エンドツーエンドのテスト
++ capybaraのインストール
++ エンドツーエンドのテストを書く
+  + _awesome_events/spec/spec_helper.rb_
+  + _awesome_events/spec/features/login_spec.rb_
+
+### JavaScriptのテスト
++ poltergeistのインストール
+  ```bash
+  $ brew install phantomjs
+  ```
+  + awesome_events/spec/spec_helper.rb
+
++ JavaScriptを利用したエンドツーエンドテストを書く
+  + _awesome_events/spec/features/create_ticket_spec.rb_
+
+### TDDの考え方
++ TDDでRailsに機能を追加する
+  + _awesome_events/spec/models/event_spec.rb_
+  + _awesome_events/app/models/event.rb_  
+
 ## <a name="3">Railsのインフラと運用</a>
 
 # 参照
@@ -202,3 +263,7 @@ $ rails g bootswatch:install
 + [Foreman](https://github.com/ddollar/foreman)
 + [TWBS Bootstrap 3.2.0 Rails gem](https://github.com/scottvrosenthal/twitter-bootswatch-rails)
 + [Rails Locale Data Repository](https://github.com/svenfuchs/rails-i18n)
++ [rspec-rails 3.0.0で「Could not load generator "generators/rspec/install/install_generator"」が出たときの対応](http://qiita.com/yuriken27@github/items/30bc7dde013cc0812d4c)
++ [RSpecがさらに捗る Shoulda-matchers のマッチャ 一覧](http://morizyun.github.io/blog/shoulda-matchers-rspec-matcher/)
++ [Spring and Shoulda error](https://github.com/centresource/preseason/issues/54)
++ [pry & Hirbでoutput error](http://katolele.net/archives/ruby100.rb)

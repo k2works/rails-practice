@@ -70,7 +70,6 @@ group :development, :test do
   gem 'gem-ripper-tags'
   gem 'guard'
   gem 'guard-shell'
-  gem 'observer'
   gem 'rev'
   gem 'rcodetools'
   gem 'rdefs'
@@ -78,6 +77,7 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-stack_explorer'
   gem 'pry-theme'
+  gem 'pry-byebug'
   gem 'hirb'
   gem 'hirb-unicode'
   gem 'rubocop'
@@ -94,5 +94,15 @@ group :development, :test do
   gem 'foreman'
   gem 'guard-foreman'
   gem 'annotate', '~> 2.6.5'
+  gem 'rspec-rails', '3.0.2'
+  gem 'guard-rspec', require: false
+  gem 'factory_girl_rails'
+  gem "spring-commands-rspec"
 end
 
+group :test do
+   gem 'shoulda-matchers', require: false
+   gem 'capybara'
+   gem 'poltergeist'
+   gem 'database_cleaner'
+end
