@@ -58,21 +58,22 @@ module UsersHelperUsersHelper1,0
 app/helpers/welcome_helper.rb,39
 module WelcomeHelperWelcomeHelper1,0
 
-app/models/event.rb,850
-class Event < ActiveRecord::BaseEvent17,0
-   has_many :tickets, dependent: :destroytickets19,0
-   has_many :tickets, dependent: :destroytickets=19,0
-   has_many :tickets, dependent: :destroyticket_ids19,0
-   has_many :tickets, dependent: :destroyticket_ids=19,0
-   belongs_to :owner, class_name: 'User'owner20,0
-   belongs_to :owner, class_name: 'User'owner=20,0
-   belongs_to :owner, class_name: 'User'build_owner20,0
-   belongs_to :owner, class_name: 'User'create_owner20,0
-   belongs_to :owner, class_name: 'User'create_owner!20,0
-   def created_by?(user)created_by?29,0
-   def self.ransackable_attributes(auth_object = nil)ransackable_attributes34,0
-   def self.ransackable_associations(auth_object = nil)ransackable_associations38,0
-   def start_time_should_be_before_end_timestart_time_should_be_before_end_time44,0
+app/models/event.rb,876
+class Event < ActiveRecord::BaseEvent18,0
+   has_many :tickets, dependent: :destroytickets20,0
+   has_many :tickets, dependent: :destroytickets=20,0
+   has_many :tickets, dependent: :destroyticket_ids20,0
+   has_many :tickets, dependent: :destroyticket_ids=20,0
+   belongs_to :owner, class_name: 'User'owner21,0
+   belongs_to :owner, class_name: 'User'owner=21,0
+   belongs_to :owner, class_name: 'User'build_owner21,0
+   belongs_to :owner, class_name: 'User'create_owner21,0
+   belongs_to :owner, class_name: 'User'create_owner!21,0
+   def created_by?(user)created_by?30,0
+   def self.ransackable_attributes(auth_object = nil)ransackable_attributes35,0
+   def self.ransackable_associations(auth_object = nil)ransackable_associations39,0
+   def rails?rails?43,0
+   def start_time_should_be_before_end_timestart_time_should_be_before_end_time49,0
 
 app/models/ticket.rb,390
 class Ticket < ActiveRecord::BaseTicket13,0

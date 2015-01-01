@@ -247,7 +247,12 @@ $ rails g bootswatch:install
 
 + JavaScriptを利用したエンドツーエンドテストを書く
   + _awesome_events/spec/features/create_ticket_spec.rb_
-  
+
+### TDDの考え方
++ TDDでRailsに機能を追加する
+  + _awesome_events/spec/models/event_spec.rb_
+  + _awesome_events/app/models/event.rb_  
+
 ## <a name="3">Railsのインフラと運用</a>
 
 # 参照
@@ -261,3 +266,4 @@ $ rails g bootswatch:install
 + [rspec-rails 3.0.0で「Could not load generator "generators/rspec/install/install_generator"」が出たときの対応](http://qiita.com/yuriken27@github/items/30bc7dde013cc0812d4c)
 + [RSpecがさらに捗る Shoulda-matchers のマッチャ 一覧](http://morizyun.github.io/blog/shoulda-matchers-rspec-matcher/)
 + [Spring and Shoulda error](https://github.com/centresource/preseason/issues/54)
++ [pry & Hirbでoutput error](http://katolele.net/archives/ruby100.rb)

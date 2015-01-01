@@ -1,5 +1,5 @@
 app/models/user.rb c90e457d808a4d63a45a5af2ad0f75a21f018f21
-app/models/event.rb 1da5147fd1cb454fefec1494f79c549f0c730ab2
+app/models/event.rb 9d1871c24bc6e166dd9abca198c81ad5b45f0635
 app/models/ticket.rb fd94ea252c6b93c907021da794b461922b0132c3
 app/helpers/users_helper.rb 4957066bcb0fa49423c7ae0fd83bc3b9e28a5ec7
 app/helpers/events_helper.rb f704008b71fd2cdd74afeba04f895fe5694e32fc
