@@ -214,6 +214,23 @@ $ rails g bootswatch:install
 + factory_girを使ってテストコードを書く
   + _awesome_events/spec/models/event_spec.rb_
 
+### コントローラのテスト
++ ひな型の作成
+  ```bash
+  $ ./bin/rails g rspec:controller events
+  ```
+
++ コントローラーのテストを書く  
+  + _awesome_events/spec/controllers/events_controller_spec.rb_
+
+### ビューのテスト
++ ひな形の作成
+  ```bash
+  $ ./bin/rails g rspec:view events show
+  ```
+
++ ビューのテストを書く
+  + _awesome_events/spec/views/events/show.html.erb_spec.rb_
 
 ## <a name="3">Railsのインフラと運用</a>
 
@@ -227,3 +244,4 @@ $ rails g bootswatch:install
 + [Rails Locale Data Repository](https://github.com/svenfuchs/rails-i18n)
 + [rspec-rails 3.0.0で「Could not load generator "generators/rspec/install/install_generator"」が出たときの対応](http://qiita.com/yuriken27@github/items/30bc7dde013cc0812d4c)
 + [RSpecがさらに捗る Shoulda-matchers のマッチャ 一覧](http://morizyun.github.io/blog/shoulda-matchers-rspec-matcher/)
++ [Spring and Shoulda error](https://github.com/centresource/preseason/issues/54)
