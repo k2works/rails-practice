@@ -232,6 +232,22 @@ $ rails g bootswatch:install
 + ビューのテストを書く
   + _awesome_events/spec/views/events/show.html.erb_spec.rb_
 
+### エンドツーエンドのテスト
++ capybaraのインストール
++ エンドツーエンドのテストを書く
+  + _awesome_events/spec/spec_helper.rb_
+  + _awesome_events/spec/features/login_spec.rb_
+
+### JavaScriptのテスト
++ poltergeistのインストール
+  ```bash
+  $ brew install phantomjs
+  ```
+  + awesome_events/spec/spec_helper.rb
+
++ JavaScriptを利用したエンドツーエンドテストを書く
+  + _awesome_events/spec/features/create_ticket_spec.rb_
+  
 ## <a name="3">Railsのインフラと運用</a>
 
 # 参照
