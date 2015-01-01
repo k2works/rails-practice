@@ -102,11 +102,11 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
-    colored (1.2)
     columnize (0.9.0)
     commonjs (0.2.7)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
+    diff-lcs (1.2.5)
     dotenv (1.0.2)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
@@ -114,6 +114,11 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.4)
     execjs (2.2.2)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     ffi (1.9.6)
     foreman (0.76.0)
       dotenv (~> 1.0.2)
@@ -138,6 +143,10 @@ GEM
       em-websocket (~> 0.5)
       guard (~> 2.8)
       multi_json (~> 1.8)
+    guard-rspec (4.5.0)
+      guard (~> 2.1)
+      guard-compat (~> 1.1)
+      rspec (>= 2.99.0, < 4.0)
     guard-shell (0.7.1)
       guard (>= 2.0.0)
       guard-compat (~> 1.0)
@@ -187,19 +196,13 @@ GEM
     mime-types (2.4.3)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
-    mini_portile (0.6.1)
+    mini_portile (0.6.2)
     minitest (5.5.0)
     multi_json (1.10.1)
     nenv (0.1.1)
-    net-sftp (2.1.2)
-      net-ssh (>= 2.6.5)
-    net-ssh (2.9.1)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     oauth (0.4.7)
-    observer (0.0.3)
-      colored (>= 1.2)
-      net-sftp (>= 2.1.1)
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
@@ -219,6 +222,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (2.0.0)
+      byebug (~> 3.4)
+      pry (~> 0.10)
     pry-doc (0.6.0)
       pry (~> 0.9)
       yard (~> 0.8)
@@ -274,6 +280,26 @@ GEM
       iobuffer (>= 0.1.3)
     ripper-tags (0.1.3)
       yajl-ruby
+    rspec (3.0.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+    rspec-core (3.0.4)
+      rspec-support (~> 3.0.0)
+    rspec-expectations (3.0.4)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.0.0)
+    rspec-mocks (3.0.4)
+      rspec-support (~> 3.0.0)
+    rspec-rails (3.0.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+      rspec-support (~> 3.0.0)
+    rspec-support (3.0.4)
     rubocop (0.28.0)
       astrolabe (~> 1.3)
       parser (>= 2.2.0.pre.7, < 3.0)
@@ -295,6 +321,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    shoulda-matchers (2.6.1)
+      activesupport (>= 3.0.0)
     slop (3.6.0)
     spoon (0.0.4)
       ffi
@@ -350,11 +378,13 @@ DEPENDENCIES
   byebug
   carrierwave
   coffee-rails (~> 4.1.0)
+  factory_girl_rails
   foreman
   gem-ripper-tags
   guard
   guard-foreman
   guard-livereload
+  guard-rspec
   guard-shell
   guard-yard
   hirb
@@ -365,9 +395,9 @@ DEPENDENCIES
   kaminari-bootstrap (~> 3.0.1)
   method_source (>= 0.8.2)
   mini_magick
-  observer
   omniauth (~> 1.2.1)
   omniauth-twitter (~> 1.0.1)
+  pry-byebug
   pry-doc
   pry-rails
   pry-stack_explorer
@@ -382,10 +412,12 @@ DEPENDENCIES
   redcarpet
   rev
   ripper-tags
+  rspec-rails (= 3.0.2)
   rubocop
   ruby-lint
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  shoulda-matchers
   spring
   sqlite3
   therubyracer
