@@ -310,13 +310,70 @@ $ cd rails_book_cookbook
   + _rails_book_cookbook/site-cookbooks/rails_book_cookbook/recipes/default.rb_  
 + 実際のサーバ上にレシピを適用するには
   ```bash
-  $ vagrant ssh-config --host rails >> ~/.ssh/config
-  $ knife solo bootstrap vagrant@rails
+  $ vagrant ssh-config --host vagrant.loacl >> ~/.ssh/config
+  $ knife solo bootstrap vagrant@vagrant.local
   ```
-  + _rails_book_cookbook/nodes/rails.json_
+  + _rails_book_cookbook/nodes/vagrant.local.json_
   ```bash
-  $ knife solo cook vagrant@rails
+  $ knife solo cook vagrant@vagrant.local
   ```
+
+### デプロイをする
+#### デプロイ前の下準備
++ Unicornの有効化
+  + _awesome_events/Gemfile_
+  + _awesome_events/config/unicorn.rb_
++ staging environmentの追加
+  + _awesome_events/config/database.yml_
+  + _awesome_events/config/secrets.yml_
+  + _awesome_events/config/deploy/staging.rb_
+  + _awesome_events/Gemfile_
++ GitHubなどのリポジトリにアプリをプッシュする
+  ```bash
+  $ cd awesome_events
+  $ git init
+  $ git add .
+  $ git commit -am "セットアップ"
+  $ git create
+  $ git push origin master
+  ```
+#### Capistranoのインストール
++ _awesome_events/Gemfile_
+```bash
+$ bundle install
+$ bundle exec cap install
+$ bundle exec cap -T
+```
+
+#### Capistranoの設定
++ _awesome_events/config/deploy.rb_
+
+#### Capistranoのマルチステージ
+_~/.ssh/config_  
+```
+Host vagrant.loacl
+HostName 127.0.0.1
+User ops
+Port 2222
+UserKnownHostsFile /dev/null
+StrictHostKeyChecking no
+PasswordAuthentication no
+IdentityFile ~/.ssh/login.pem
+IdentitiesOnly yes
+ForwardAgent yes
+LogLevel FATAL
+```
++ _awesome_events/config/deploy/staging.rb_
+
+#### Capistranoのプラグイン機構
++ _awesome_events/Gemfile_
++ _awesome_events/Capfile_
++ _awesome_events/config/deploy.rb_
++ _awesome_events/config/deploy/staging.rb_
+
+```bash
+$ bundle exce cap staging deploy
+```
 
 # 参照
 + [パーフェクトRuby on Rails](http://gihyo.jp/book/2014/978-4-7741-6516-5)
@@ -331,3 +388,4 @@ $ cd rails_book_cookbook
 + [Spring and Shoulda error](https://github.com/centresource/preseason/issues/54)
 + [pry & Hirbでoutput error](http://katolele.net/archives/ruby100.rb)
 + [ruby2.0のインストール時rbenvがBUILD FAILEDになる、そんなとき](http://unicus.jp/skmk/archives/771)
++ [nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)](http://easyramble.com/nginx-emerg-bind-failed.html)
