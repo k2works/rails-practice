@@ -375,6 +375,13 @@ LogLevel FATAL
 $ bundle exce cap staging deploy
 ```
 
+### New Relicによるアプリケーションの監視
++ _awesome_events/Gemfile_
++ _awesome_events/config/newrelic.yml_
+
++ Developer Modeの確認
+http://localhost:3000/newrelic
+
 # 参照
 + [パーフェクトRuby on Rails](http://gihyo.jp/book/2014/978-4-7741-6516-5)
 + [Guard::LiveReload](https://github.com/guard/guard-livereload)
