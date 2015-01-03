@@ -1,2 +1,4 @@
 .versions.conf
 awesome_events_sample
+.vagrant
+.chef

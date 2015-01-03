@@ -10,6 +10,7 @@ Rails再入門
 | rvm       　　　|1.26.3        |             |
 | ruby      　　　|2.1.5         |             |
 | rails          |4.2.0         |             |
+| ChefDK         |0.3.5         |             |
 
 # 構成
 + [Railsアプリケーション開発](#1)
@@ -254,6 +255,132 @@ $ rails g bootswatch:install
   + _awesome_events/app/models/event.rb_  
 
 ## <a name="3">Railsのインフラと運用</a>
+### VagrantでローカルにVMを作る
++ Vagrant経由でVMを立ち上げる
+```bash
+$ vagrant box add rails https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box
+$ vagrant init
+$ vagrant up
+```
+
++ VMの設定を変更する
+
+
+### Chefを用いた本格的なサーバ構成管理
+#### クックブックのひな形を作る
+```bash
+$ knife solo init rails_book_cookbook
+$ mv Vagrantfile rails_book_cookbook
+$ cd rails_book_cookbook
+```
+
+#### 必要なソフトウェアを既存のレシピでセットアップする
+  + _rails_book_cookbook/Vagrantfile_
+  ```bash
+  $ berks vendor cookbooks
+  $ vagrant reload
+  $ vagrant provision
+  ```
+
+#### カスタムレシピを作る
++ クックブックのひな形を作る
+  ```bash
+  $ knife cookbook create -o site-cookbooks rails_book_cookbook  
+  ```
++ オペレータユーザを作る  
+  + _rails_book_cookbook/site-cookbooks/rails_book_cookbook/recipes/ops_user.rb_
++ デプロイに必要な秘密鍵、公開鍵を準備する  
+  ```bash
+  $ ssh-keygen -t rsa -f ~/.ssh/login.pem
+  $ ssh-keygen -t rsa -f ~/.ssh/awesome_event.pem  
+  $ cp ~/.ssh/login.pem.pub rails_book_cookbook/site-cookbooks/rails_book_cookbook/files/default/authorized_keys
+  $ cp ~/.ssh/awesome_event.pem rails_book_cookbook/site-cookbooks/rails_book_cookbook/files/default/id_rsa
+  ```
+  + _rails_book_cookbook/site-cookbooks/rails_book_cookbook/recipes/keys.rb_
++ Nginxの設定を配置する
+  + _rails_book_cookbook/site-cookbooks/rails_book_cookbook/recipes/nginx_setting.rb_
+  + _rails_book_cookbook/site-cookbooks/rails_book_cookbook/templates/default/default.conf.erb_
++ SQlite3関連のパッケージを入れる
+  + _rails_book_cookbook/site-cookbooks/rails_book_cookbook/recipes/sqlite3_dev.rb_
++ iptablesの設定をする
+  + _rails_book_cookbook/Berksfile_
+  + _rails_book_cookbook/site-cookbooks/rails_book_cookbook/metadata.rb_
+  + _rails_book_cookbook/site-cookbooks/rails_book_cookbook/recipes/iptables.rb_
++ レシピをまとめて呼び出すには
+  + _rails_book_cookbook/site-cookbooks/rails_book_cookbook/recipes/default.rb_  
++ 実際のサーバ上にレシピを適用するには
+  ```bash
+  $ vagrant ssh-config --host vagrant.loacl >> ~/.ssh/config
+  $ knife solo bootstrap vagrant@vagrant.local
+  ```
+  + _rails_book_cookbook/nodes/vagrant.local.json_
+  ```bash
+  $ knife solo cook vagrant@vagrant.local
+  ```
+
+### デプロイをする
+#### デプロイ前の下準備
++ Unicornの有効化
+  + _awesome_events/Gemfile_
+  + _awesome_events/config/unicorn.rb_
++ staging environmentの追加
+  + _awesome_events/config/database.yml_
+  + _awesome_events/config/secrets.yml_
+  + _awesome_events/config/deploy/staging.rb_
+  + _awesome_events/Gemfile_
++ GitHubなどのリポジトリにアプリをプッシュする
+  ```bash
+  $ cd awesome_events
+  $ git init
+  $ git add .
+  $ git commit -am "セットアップ"
+  $ git create
+  $ git push origin master
+  ```
+#### Capistranoのインストール
++ _awesome_events/Gemfile_
+```bash
+$ bundle install
+$ bundle exec cap install
+$ bundle exec cap -T
+```
+
+#### Capistranoの設定
++ _awesome_events/config/deploy.rb_
+
+#### Capistranoのマルチステージ
+_~/.ssh/config_  
+```
+Host vagrant.loacl
+HostName 127.0.0.1
+User ops
+Port 2222
+UserKnownHostsFile /dev/null
+StrictHostKeyChecking no
+PasswordAuthentication no
+IdentityFile ~/.ssh/login.pem
+IdentitiesOnly yes
+ForwardAgent yes
+LogLevel FATAL
+```
++ _awesome_events/config/deploy/staging.rb_
+
+#### Capistranoのプラグイン機構
++ _awesome_events/Gemfile_
++ _awesome_events/Capfile_
++ _awesome_events/config/deploy.rb_
++ _awesome_events/config/deploy/staging.rb_
+
+```bash
+$ bundle exce cap staging deploy
+```
+
+### New Relicによるアプリケーションの監視
++ _awesome_events/Gemfile_
++ _awesome_events/config/newrelic.yml_
+
++ Developer Modeの確認
+http://localhost:3000/newrelic
 
 # 参照
 + [パーフェクトRuby on Rails](http://gihyo.jp/book/2014/978-4-7741-6516-5)
@@ -267,3 +394,5 @@ $ rails g bootswatch:install
 + [RSpecがさらに捗る Shoulda-matchers のマッチャ 一覧](http://morizyun.github.io/blog/shoulda-matchers-rspec-matcher/)
 + [Spring and Shoulda error](https://github.com/centresource/preseason/issues/54)
 + [pry & Hirbでoutput error](http://katolele.net/archives/ruby100.rb)
++ [ruby2.0のインストール時rbenvがBUILD FAILEDになる、そんなとき](http://unicus.jp/skmk/archives/771)
++ [nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)](http://easyramble.com/nginx-emerg-bind-failed.html)
