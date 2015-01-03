@@ -1,0 +1,30 @@
+{
+  "rails_book_cookbook": {
+    "server_name": "rails"
+  },
+  "rbenv": {
+    "global": "2.1.2",
+    "rubies": ["2.1.2"],
+    "gem": {
+      "2.1.2": [
+        {"name": "bundler"}
+      ]
+    }
+  },
+  "run_list": [
+    "recipe[build-essential]",
+    "recipe[git]",
+    "recipe[memcached]",
+    "recipe[nodejs]",
+    "recipe[database]",
+    "recipe[xml]",
+    "recipe[ruby_build]",
+    "recipe[rbenv::system]",
+    "recipe[nginx]",
+    "recipe[imagemagick]",
+    "recipe[rails_book_cookbook::ops_user]",
+    "recipe[rails_book_cookbook::keys]",
+    "recipe[rails_book_cookbook::nginx_setting]",
+    "recipe[rails_book_cookbook::iptables]"
+  ]
+}
