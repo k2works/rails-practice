@@ -310,12 +310,12 @@ $ cd rails_book_cookbook
   + _rails_book_cookbook/site-cookbooks/rails_book_cookbook/recipes/default.rb_  
 + 実際のサーバ上にレシピを適用するには
   ```bash
-  $ vagrant ssh-config --host vagrant.loacl >> ~/.ssh/config
-  $ knife solo bootstrap vagrant@vagrant.local
+  $ vagrant ssh-config --host rails-env >> ~/.ssh/config
+  $ knife solo bootstrap vagrant@rails-env
   ```
-  + _rails_book_cookbook/nodes/vagrant.local.json_
+  + _rails_book_cookbook/nodes/rails-env.json_
   ```bash
-  $ knife solo cook vagrant@vagrant.local
+  $ knife solo cook vagrant@rails-env
   ```
 
 ### デプロイをする
