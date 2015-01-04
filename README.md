@@ -438,7 +438,17 @@ http://localhost:3000/newrelic
   + _status_plugin/status_plugin.gemspec_
   + _awesome_events/Gemfile_
 
-
+### Mountable Engine型プラグインについて
++ Mountable Engine型プラグインを作る
+  ```bash
+  $ rails plugin new status_show_plugin --mountable
+  ```
++ Railsアプリで使うには
+  _awesome_events/config/routes.rb_  
+  ```bash  
+  mount StatusShowPlugin::Engine => '/status'
+  ```
+  
 # 参照
 + [パーフェクトRuby on Rails](http://gihyo.jp/book/2014/978-4-7741-6516-5)
 + [Guard::LiveReload](https://github.com/guard/guard-livereload)
