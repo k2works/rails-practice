@@ -70,7 +70,7 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  
+
   gem 'ripper-tags'
   gem 'gem-ripper-tags'
   gem 'guard'
@@ -115,3 +115,5 @@ group :test do
    gem 'poltergeist'
    gem 'database_cleaner'
 end
+
+gem "simple_auth_plugin", git: "git@github.com:k2works/simple_auth_plugin.git", require: "simple_auth_plugin/railtie"

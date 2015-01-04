@@ -16,6 +16,7 @@ Rails再入門
 + [Railsアプリケーション開発](#1)
 + [Railsアプリケーションのテスト](#2)
 + [Railsのインフラと運用](#3)
++ [Railsを拡張する](#4)
 
 # 詳細
 ## <a name="1">Railsアプリケーション開発</a>
@@ -382,6 +383,40 @@ $ bundle exce cap staging deploy
 + Developer Modeの確認
 http://localhost:3000/newrelic
 
+## <a name="4">Railsの拡張</a>
+### Railtie型プラグインを作ってみる
++ ひな形の生成
+  ```bash
+  $ rails plugin new simple_auth_plugin
+  ```
+
++ プラグインのメイン処理を書いていく
+  + _simple_auth_plugin/lib/simple_auth_plugin.rb_
+
++ ジェネレータを作る
+  + _simple_auth_plugin/lib/simple_auth_plugin/generator.rb_
+
++ 専用のRakeタスクを定義する
+  + _simple_auth_plugin/lib/tasks/simple_auth_plugin_tasks.rake_
+
++ Railtieを利用してこれらのパーツをつなぎ合わせる
+  + _simple_auth_plugin/lib/simple_auth_plugin/railtie.rb_
+
++ gemspecの編集をし、リリースする
+  + _simple_auth_plugin/lib/simple_auth_plugin/version.rb_
+  + _simple_auth_plugin/simple_auth_plugin.gemspec_
+  ```bash
+  $ git init
+  $ git add .
+  $ git commit -am "セットアップ"
+  $ git create
+  $ git push origin master
+  $ rake release
+  ```
+  _awesome_events/Gemfile_
+  ```
+  gem "simple_auth_plugin", git: "git@github.com:k2works/simple_auth_plugin.git", require: "simple_auth_plugin/railtie"  
+  ```
 # 参照
 + [パーフェクトRuby on Rails](http://gihyo.jp/book/2014/978-4-7741-6516-5)
 + [Guard::LiveReload](https://github.com/guard/guard-livereload)
