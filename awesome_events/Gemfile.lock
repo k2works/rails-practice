@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: git@github.com:k2works/simple_auth_plugin.git
-  revision: 199185e77de570ecbae01825e7a574181016968b
+  revision: b7fe2b4a9918c1617a29241a2bcdff542412cea6
   specs:
     simple_auth_plugin (0.0.1)
       rails (~> 4.2.0)
