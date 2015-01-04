@@ -1,3 +1,6 @@
 [submodule "simple_auth_plugin"]
 	path = simple_auth_plugin
 	url = git@github.com:k2works/simple_auth_plugin.git
+[submodule "status_plugin"]
+	path = status_plugin
+	url = git@github.com:k2works/status_plugin.git

@@ -37,6 +37,13 @@ GIT
     simple_auth_plugin (0.0.1)
       rails (~> 4.2.0)
 
+GIT
+  remote: git@github.com:k2works/status_plugin.git
+  revision: 46ab550ac74a4c713b76b95c43825e983ac1642f
+  specs:
+    status_plugin (0.0.1)
+      rails (~> 4.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -484,6 +491,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   sqlite3
+  status_plugin!
   therubyracer
   turbolinks
   twitter-bootswatch-rails (~> 3.2.0)

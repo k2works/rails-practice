@@ -117,3 +117,4 @@ group :test do
 end
 
 gem "simple_auth_plugin", git: "git@github.com:k2works/simple_auth_plugin.git", require: "simple_auth_plugin/railtie"
+gem "status_plugin", git: "git@github.com:k2works/status_plugin.git"

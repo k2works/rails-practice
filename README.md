@@ -417,6 +417,28 @@ http://localhost:3000/newrelic
   ```
   gem "simple_auth_plugin", git: "git@github.com:k2works/simple_auth_plugin.git", require: "simple_auth_plugin/railtie"  
   ```
+
+### Engine型プラグインを作る
++ Engin型プラグインのひな形を作る
+  ```bash
+  $ rails plugin new status_show_plugin --full
+  ```
+
++ Engineの中身を実装する
+  ```bash
+  $ rails g controller Status
+  ```
+  + _status_plugin/app/controllers/status_controller.rb_
+  + _status_plugin/config/routes.rb_
+
++ EngineをRailsのプラグインとして利用可能にする
+  + _status_plugin/lib/status_plugin/engine.rb_
+
++ gemspecの編集をし、リリースする
+  + _status_plugin/status_plugin.gemspec_
+  + _awesome_events/Gemfile_
+
+
 # 参照
 + [パーフェクトRuby on Rails](http://gihyo.jp/book/2014/978-4-7741-6516-5)
 + [Guard::LiveReload](https://github.com/guard/guard-livereload)
